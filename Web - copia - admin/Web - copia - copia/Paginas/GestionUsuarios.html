@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Panel Admin</title>
+    <link rel="stylesheet" href="../Estilos/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../Imagenes/Logo.png" alt="Logo Colegio Mayor">
+            </div>
+            <h1>CMU San Agustín - Panel de Administración</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Menú Principal</a></li>
+            <li><a href="Calendario.html">Gestion del calendario</a></li>
+            <li><a href="GestionMenu.html">Gestión del Menú</a></li>
+            <li><a href="GestionActividades.html">Gestión de Actividades</a></li>
+            <li><a href="GestionUsuarios.html" class="active">Gestión de Usuarios</a></li>
+        </ul>
+    </nav>
+    <main class="admin-container">
+        <h2>Gestión de Usuarios</h2>
+        <div class="admin-actions">
+            <button class="btn-admin" id="btnNuevoUsuario">Añadir Nuevo Usuario</button>
+        </div>
+        <div id="user-list">
+
+
+        </div>
+    </main>
+    <script>
+        // Muestra la lista de usuarios
+        // Lista de usuarios inventados
+        const users = [
+            {
+                id: 1,
+                name: 'Juan Pérez',
+                age: 24,
+                occupation: 'Estudiante de Ingeniería',
+                location: 'Madrid, España',
+                profilePicture: 'https://via.placeholder.com/100',
+                description: 'Juan es un apasionado de la tecnología y la programación. Le encanta desarrollar aplicaciones móviles y explorar nuevas tecnologías.',
+                contact: {
+                    email: 'juan.perez@example.com',
+                    phone: '+34 612 345 678'
+                }
+            },
+            {
+                id: 2,
+                name: 'María González',
+                age: 29,
+                occupation: 'Diseñadora Gráfica',
+                location: 'Barcelona, España',
+                profilePicture: 'https://via.placeholder.com/100',
+                description: 'María tiene una gran pasión por el diseño visual. Le encanta trabajar con herramientas como Adobe Photoshop y Illustrator.',
+                contact: {
+                    email: 'maria.gonzalez@example.com',
+                    phone: '+34 612 987 654'
+                }
+            },
+            {
+                id: 3,
+                name: 'Carlos Martínez',
+                age: 33,
+                occupation: 'Chef',
+                location: 'Sevilla, España',
+                profilePicture: 'https://via.placeholder.com/100',
+                description: 'Carlos es un chef con más de 10 años de experiencia en la cocina gourmet. Su especialidad son los platos mediterráneos.',
+                contact: {
+                    email: 'carlos.martinez@example.com',
+                    phone: '+34 612 111 222'
+                }
+            }
+        ];
+
+        // Referencia a la lista de usuarios y al modal
+        const userList = document.getElementById('user-list');
+        const modal = document.getElementById('user-modal');
+
+        // Mostrar usuarios en la lista
+        users.forEach(user => {
+            const userElement = document.createElement('div');
+            userElement.classList.add('user');
+            userElement.innerHTML = `
+  <img src="${user.profilePicture}" alt="${user.name}" class="profile-img">
+  <h2>${user.name}</h2>
+  <p>Ocupación: ${user.occupation}</p>
+  <button onclick="showUserInfo(${user.id})">Ver más</button>
+`;
+            userList.appendChild(userElement);
+        });
+
+        // Función para mostrar la información del usuario en el modal
+        function showUserInfo(userId) {
+            const user = users.find(u => u.id === userId);
+            document.getElementById('user-name').innerText = user.name;
+            document.getElementById('user-age').innerText = user.age;
+            document.getElementById('user-occupation').innerText = user.occupation;
+            document.getElementById('user-location').innerText = user.location;
+            document.getElementById('user-description').innerText = user.description;
+            document.getElementById('user-email').innerText = user.contact.email;
+            document.getElementById('user-phone').innerText = user.contact.phone;
+
+            // Mostrar el modal
+            modal.style.display = 'block';
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        users.forEach(user => {
+            const userElement = document.createElement('div');
+            userElement.classList.add('user');
+            userElement.innerHTML = `
+            <img src="${user.profilePicture}" alt="${user.name}" class="profile-img">
+            <h2>${user.name}</h2>
+            <p>Ocupación: ${user.occupation}</p>
+            <button onclick="showUserInfo(${user.id})">Ver más</button>
+          `;
+            userList.appendChild(userElement);
+        });
+
+        // Función para mostrar la información adicional
+        function showUserInfo(userId) {
+            const user = users.find(u => u.id === userId);
+            alert(`
+            Nombre: ${user.name}
+            Edad: ${user.age}
+            Ocupación: ${user.occupation}
+            Ubicación: ${user.location}
+            Descripción: ${user.description}
+            Email: ${user.contact.email}
+            Teléfono: ${user.contact.phone}
+          `);
+        }
+    </script>
+
+
+
+
+    <footer>
+        <p>&copy; 2025 Colegio Mayor - Panel de Administración</p>
+    </footer>
+</body>
+
+</html>

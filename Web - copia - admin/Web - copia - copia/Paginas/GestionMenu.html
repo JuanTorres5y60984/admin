@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    "Primer Plato"Calendario - CMU San Agustín<"Primer Plato" <link rel="stylesheet" href="../Estilos/styles.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../Imagenes/Logo.png" alt="Logo Colegio Mayor">
+            </div>
+            <h1>CMU San Agustín</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Menú Principal</a></li>
+            <li><a href="Calendario.html">Gestion del calendario</a></li>
+            <li><a href="GestionMenu.html" class="active">Gestión del Menú</a></li>
+            <li><a href="GestionActividades.html">Gestión de Actividades</a></li>
+            <li><a href="GestionUsuarios.html">Gestión de Usuarios</a></li>
+        </ul>
+    </nav>
+    <main class="calendario-container">
+
+        <div class="leyenda">
+            <h3>Tipos de Actividades:</h3>
+            <div class="tipo-actividad">
+                <span class="color-deportes"></span>
+                <p>Deportes</p>
+            </div>
+            <div class="tipo-actividad">
+                <span class="color-cultural"></span>
+                <p>Actividades Culturales</p>
+            </div>
+            <div class="tipo-actividad">
+                <span class="color-academico"></span>
+                <p>Eventos Académicos</p>
+            </div>
+            <div class="tipo-actividad">
+                <span class="color-social"></span>
+                <p>Eventos Sociales</p>
+            </div>
+        </div>
+
+        <div id="calendario"></div>
+
+        <div class="nuevo-evento">
+            <h3>Añadir Nueva Comida</h3>
+            <form id="formNuevoEvento">
+                <div class="form-group">
+                    <label for="tituloEvento">Nombre de la comida</label>
+                    <input type="text" id="tituloEvento" required>
+                </div>
+                <div class="form-group">
+                    <label for="tituloEvento">Primer Plato</label>
+                    <input type="text" id="tituloEvento" required>
+                </div>
+                <div class="form-group">
+                    <label for="tituloEvento">Segundo Plato</label>
+                    <input type="text" id="tituloEvento" required>
+                </div>
+                <div class="form-group">
+                    <label for="tituloEvento">Postre</label>
+                    <input type="text" id="tituloEvento" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipoEvento">Comida del Dia</label>
+                    <select id="tipoEvento" required>
+                        <option value='color-deportes'>Comida</option>
+                        <option value="color-cultural">deportes</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="descripcionEvento">Descripción:</label>
+                    <textarea id="descripcionEvento" required></textarea>
+                </div>
+                <button type="submit" class="btn-seccion">Añadir Evento</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Colegio Mayor - Gestión Universitaria</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendario');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+
+
+                    {
+                        title: "Hamburguesa con Patatas",
+                        start: "2025-04-01",
+                        end: "2025-04-01",
+                        className: "color-deportes",
+                        description: "Primer Plato: Hamburguesa. Segundo Plato: Patatas. Postre: Fruta del tiempo."
+                    },
+                    {
+                        title: "Ensalada de Pollo",
+                        start: "2025-04-02",
+                        end: "2025-04-02",
+                        className: "color-comida",
+                        description: "Primer Plato: Ensalada variada con pollo a la plancha. Segundo Plato: Pan integral. Postre: Yogur natural."
+                    },
+                    {
+                        title: "Lentejas con Arroz",
+                        start: "2025-04-03",
+                        end: "2025-04-03",
+                        className: "color-comida",
+                        description: "Primer Plato: Lentejas estofadas. Segundo Plato: Arroz integral. Postre: Manzana."
+                    },
+                    {
+                        title: "Salmón con Verduras",
+                        start: "2025-04-04",
+                        end: "2025-04-04",
+                        className: "color-comida",
+                        description: "Primer Plato: Salmón a la plancha. Segundo Plato: Verduras salteadas. Postre: Naranja."
+                    },
+                    {
+                        title: "Pizza Casera",
+                        start: "2025-04-05",
+                        end: "2025-04-05",
+                        className: "color-cheatmeal",
+                        description: "Primer Plato: Pizza de masa integral con verduras y queso. Segundo Plato: Ensalada mixta. Postre: Helado."
+                    },
+                    {
+                        title: "Pollo al Horno con Puré",
+                        start: "2025-04-06",
+                        end: "2025-04-06",
+                        className: "color-comida",
+                        description: "Primer Plato: Pollo al horno. Segundo Plato: Puré de patatas. Postre: Pera."
+                    },
+                    {
+                        title: "Pasta con Verduras",
+                        start: "2025-04-07",
+                        end: "2025-04-07",
+                        className: "color-comida",
+                        description: "Primer Plato: Pasta integral con verduras salteadas. Segundo Plato: Queso rallado. Postre: Kiwi."
+                    },
+                    {
+                        title: "Merluza con Ensalada",
+                        start: "2025-04-08",
+                        end: "2025-04-08",
+                        className: "color-comida",
+                        description: "Primer Plato: Merluza al horno. Segundo Plato: Ensalada de tomate y aguacate. Postre: Fresas."
+                    },
+                    {
+                        title: "Guiso de Garbanzos",
+                        start: "2025-04-09",
+                        end: "2025-04-09",
+                        className: "color-comida",
+                        description: "Primer Plato: Guiso de garbanzos con verduras. Segundo Plato: Pan integral. Postre: Plátano."
+                    },
+                    {
+                        title: "Ternera con Arroz",
+                        start: "2025-04-10",
+                        end: "2025-04-10",
+                        className: "color-comida",
+                        description: "Primer Plato: Ternera salteada. Segundo Plato: Arroz basmati. Postre: Melón."
+                    },
+                    {
+                        title: "Tacos de Pollo",
+                        start: "2025-04-11",
+                        end: "2025-04-11",
+                        className: "color-comida",
+                        description: "Primer Plato: Tacos de pollo con verduras. Segundo Plato: Guacamole casero. Postre: Mango."
+                    },
+                    {
+                        title: "Cheeseburger y Papas Fritas",
+                        start: "2025-04-12",
+                        end: "2025-04-12",
+                        className: "color-cheatmeal",
+                        description: "Primer Plato: Cheeseburger. Segundo Plato: Papas fritas. Postre: Brownie con helado."
+                    },
+                    {
+                        title: "Pisto con Huevo",
+                        start: "2025-04-13",
+                        end: "2025-04-13",
+                        className: "color-comida",
+                        description: "Primer Plato: Pisto manchego. Segundo Plato: Huevo a la plancha. Postre: Uvas."
+                    },
+                    {
+                        title: "Sopa de Verduras y Pollo",
+                        start: "2025-04-14",
+                        end: "2025-04-14",
+                        className: "color-comida",
+                        description: "Primer Plato: Sopa de verduras con pollo. Segundo Plato: Tostadas integrales. Postre: Yogur con miel."
+                    },
+                    {
+                        title: "Paella de Mariscos",
+                        start: "2025-04-15",
+                        end: "2025-04-15",
+                        className: "color-comida",
+                        description: "Primer Plato: Paella de mariscos. Segundo Plato: Ensalada fresca. Postre: Melocotón."
+                    },
+                    {
+                        title: "Sándwich de Pollo y Aguacate",
+                        start: "2025-04-01",
+                        end: "2025-04-01",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Sándwich integral de pollo y aguacate. Segundo Plato: Ensalada verde. Postre: Yogur natural."
+                    },
+                    {
+                        title: "Crema de Calabacín y Tortilla",
+                        start: "2025-04-02",
+                        end: "2025-04-02",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Crema de calabacín. Segundo Plato: Tortilla francesa. Postre: Manzana."
+                    },
+                    {
+                        title: "Ensalada de Atún",
+                        start: "2025-04-03",
+                        end: "2025-04-03",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Ensalada de atún con tomate y huevo. Segundo Plato: Pan integral. Postre: Naranja."
+                    },
+                    {
+                        title: "Pechuga de Pavo con Verduras",
+                        start: "2025-04-04",
+                        end: "2025-04-04",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Pechuga de pavo a la plancha. Segundo Plato: Verduras al vapor. Postre: Pera."
+                    },
+                    {
+                        title: "Hamburguesa con Queso",
+                        start: "2025-04-05",
+                        end: "2025-04-05",
+                        className: "color-cheatmeal",
+                        description: "Primer Plato: Hamburguesa casera con queso. Segundo Plato: Patatas fritas. Postre: Helado de chocolate."
+                    },
+                    {
+                        title: "Revuelto de Champiñones",
+                        start: "2025-04-06",
+                        end: "2025-04-06",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Revuelto de champiñones con huevo. Segundo Plato: Pan integral. Postre: Kiwi."
+                    },
+                    {
+                        title: "Sopa de Pollo y Verduras",
+                        start: "2025-04-07",
+                        end: "2025-04-07",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Sopa de pollo y verduras. Segundo Plato: Tostadas integrales. Postre: Plátano."
+                    },
+                    {
+                        title: "Tostadas con Aguacate y Salmón",
+                        start: "2025-04-08",
+                        end: "2025-04-08",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Tostadas integrales con aguacate y salmón. Segundo Plato: Ensalada mixta. Postre: Fresas."
+                    },
+                    {
+                        title: "Pisto con Huevo a la Plancha",
+                        start: "2025-04-09",
+                        end: "2025-04-09",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Pisto de verduras. Segundo Plato: Huevo a la plancha. Postre: Uvas."
+                    },
+                    {
+                        title: "Bacalao con Verduras",
+                        start: "2025-04-10",
+                        end: "2025-04-10",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Bacalao al horno. Segundo Plato: Verduras asadas. Postre: Melón."
+                    },
+                    {
+                        title: "Ensalada César",
+                        start: "2025-04-11",
+                        end: "2025-04-11",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Ensalada César con pollo. Segundo Plato: Pan integral. Postre: Mango."
+                    },
+                    {
+                        title: "Pizza Casera de Pepperoni",
+                        start: "2025-04-12",
+                        end: "2025-04-12",
+                        className: "color-cheatmeal",
+                        description: "Primer Plato: Pizza casera de pepperoni. Segundo Plato: Ensalada mixta. Postre: Tiramisú."
+                    },
+                    {
+                        title: "Guisantes con Jamón",
+                        start: "2025-04-13",
+                        end: "2025-04-13",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Guisantes con jamón. Segundo Plato: Tortilla francesa. Postre: Pera."
+                    },
+                    {
+                        title: "Crema de Calabaza y Pollo",
+                        start: "2025-04-14",
+                        end: "2025-04-14",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Crema de calabaza. Segundo Plato: Pollo a la plancha. Postre: Yogur con miel."
+                    },
+                    {
+                        title: "Tacos de Pescado",
+                        start: "2025-04-15",
+                        end: "2025-04-15",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Tacos de pescado con salsa de yogur. Segundo Plato: Ensalada de col. Postre: Melocotón."
+                    },
+                        
+                    
+                    {
+                        title: "Omelette de Espinacas",
+                        start: "2025-04-16",
+                        end: "2025-04-16",
+                        className: "color-cena",
+                        description: "Primer Plato: Omelette de espinacas y queso. Segundo Plato: Pan integral. Postre: Manzana."
+                    },
+                    {
+                        title: "Sopa de Tomate y Pollo",
+                        start: "2025-04-17",
+                        end: "2025-04-17",
+                        className: "color-cena",
+                        description: "Primer Plato: Sopa de tomate con pollo. Segundo Plato: Tostadas integrales. Postre: Yogur con miel."
+                    },
+                    {
+                        title: "Berenjenas Rellenas",
+                        start: "2025-04-18",
+                        end: "2025-04-18",
+                        className: "color-cena",
+                        description: "Primer Plato: Berenjenas rellenas de carne y verduras. Segundo Plato: Ensalada mixta. Postre: Naranja."
+                    },
+                    {
+                        title: "Hot Dog Casero",
+                        start: "2025-04-19",
+                        end: "2025-04-19",
+                        className: "color-cheatmeal",
+                        description: "Primer Plato: Hot dog casero con pan integral. Segundo Plato: Patatas gajo. Postre: Helado de vainilla."
+                    },
+                    {
+                        title: "Ensalada de Garbanzos",
+                        start: "2025-04-20",
+                        end: "2025-04-20",
+                        className: "color-cena",
+                        description: "Primer Plato: Ensalada de garbanzos con atún. Segundo Plato: Pan integral. Postre: Kiwi."
+                    },
+                    {
+                        title: "Filete de Merluza a la Plancha",
+                        start: "2025-04-21",
+                        end: "2025-04-21",
+                        className: "color-cena",
+                        description: "Primer Plato: Filete de merluza a la plancha. Segundo Plato: Verduras al vapor. Postre: Pera."
+                    },
+                    {
+                        title: "Pasta con Salsa de Tomate Casera",
+                        start: "2025-04-22",
+                        end: "2025-04-22",
+                        className: "color-cena",
+                        description: "Primer Plato: Pasta integral con salsa de tomate casera. Segundo Plato: Queso rallado. Postre: Fresas."
+                    },
+                    {
+                        title: "Pollo al Curry",
+                        start: "2025-04-23",
+                        end: "2025-04-23",
+                        className: "color-cena",
+                        description: "Primer Plato: Pollo al curry con arroz. Segundo Plato: Ensalada de pepino. Postre: Plátano."
+                    },
+                    {
+                        title: "Tostadas con Hummus y Aguacate",
+                        start: "2025-04-24",
+                        end: "2025-04-24",
+                        className: "color-cena",
+                        description: "Primer Plato: Tostadas integrales con hummus y aguacate. Segundo Plato: Ensalada verde. Postre: Uvas."
+                    },
+                    {
+                        title: "Salmón a la Naranja",
+                        start: "2025-04-25",
+                        end: "2025-04-25",
+                        className: "color-cena",
+                        description: "Primer Plato: Salmón a la naranja. Segundo Plato: Verduras asadas. Postre: Mango."
+                    },
+                    {
+                        title: "Nachos con Guacamole y Queso",
+                        start: "2025-04-26",
+                        end: "2025-04-26",
+                        className: "color-cheatmeal",
+                        description: "Primer Plato: Nachos con guacamole y queso fundido. Segundo Plato: Ensalada de col. Postre: Tarta de queso."
+                    },
+                    {
+                        title: "Sopa de Lentejas",
+                        start: "2025-04-27",
+                        end: "2025-04-27",
+                        className: "color-cena",
+                        description: "Primer Plato: Sopa de lentejas con verduras. Segundo Plato: Pan integral. Postre: Melón."
+                    },
+                    {
+                        title: "Tofu con Verduras Salteadas",
+                        start: "2025-04-28",
+                        end: "2025-04-28",
+                        className: "color-cena",
+                        description: "Primer Plato: Tofu salteado con verduras. Segundo Plato: Arroz basmati. Postre: Piña."
+                    },
+                    {
+                        title: "Sándwich de Atún y Espinacas",
+                        start: "2025-04-29",
+                        end: "2025-04-29",
+                        className: "color-cena",
+                        description: "Primer Plato: Sándwich integral de atún y espinacas. Segundo Plato: Ensalada de tomate. Postre: Yogur natural."
+                    },
+                    {
+                        title: "Burritos de Pollo y Frijoles",
+                        start: "2025-04-30",
+                        end: "2025-04-30",
+                        className: "color-cena",
+                        description: "Primer Plato: Burritos de pollo y frijoles. Segundo Plato: Ensalada de maíz. Postre: Sandía."
+                    },
+                    {
+                        title: "Sándwich de Pollo y Aguacate",
+                        start: "2025-04-16",
+                        end: "2025-04-16",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Sándwich integral de pollo y aguacate. Segundo Plato: Ensalada verde. Postre: Yogur natural."
+                    },
+                    {
+                        title: "Crema de Calabacín y Tortilla",
+                        start: "2025-04-17",
+                        end: "2025-04-17",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Crema de calabacín. Segundo Plato: Tortilla francesa. Postre: Manzana."
+                    },
+                    {
+                        title: "Ensalada de Atún",
+                        start: "2025-04-18",
+                        end: "2025-04-18",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Ensalada de atún con tomate y huevo. Segundo Plato: Pan integral. Postre: Naranja."
+                    },
+                    {
+                        title: "Pechuga de Pavo con Verduras",
+                        start: "2025-04-19",
+                        end: "2025-04-19",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Pechuga de pavo a la plancha. Segundo Plato: Verduras al vapor. Postre: Pera."
+                    },
+                    {
+                        title: "Hamburguesa con Queso",
+                        start: "2025-04-20",
+                        end: "2025-04-20",
+                        className: "color-cheatmeal",
+                        description: "Primer Plato: Hamburguesa casera con queso. Segundo Plato: Patatas fritas. Postre: Helado de chocolate."
+                    },
+                    {
+                        title: "Revuelto de Champiñones",
+                        start: "2025-04-21",
+                        end: "2025-04-21",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Revuelto de champiñones con huevo. Segundo Plato: Pan integral. Postre: Kiwi."
+                    },
+                    {
+                        title: "Sopa de Pollo y Verduras",
+                        start: "2025-04-22",
+                        end: "2025-04-22",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Sopa de pollo y verduras. Segundo Plato: Tostadas integrales. Postre: Plátano."
+                    },
+                    {
+                        title: "Tostadas con Aguacate y Salmón",
+                        start: "2025-04-23",
+                        end: "2025-04-23",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Tostadas integrales con aguacate y salmón. Segundo Plato: Ensalada mixta. Postre: Fresas."
+                    },
+                    {
+                        title: "Pisto con Huevo a la Plancha",
+                        start: "2025-04-24",
+                        end: "2025-04-24",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Pisto de verduras. Segundo Plato: Huevo a la plancha. Postre: Uvas."
+                    },
+                    {
+                        title: "Bacalao con Verduras",
+                        start: "2025-04-25",
+                        end: "2025-04-25",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Bacalao al horno. Segundo Plato: Verduras asadas. Postre: Melón."
+                    },
+                    {
+                        title: "Ensalada César",
+                        start: "2025-04-26",
+                        end: "2025-04-26",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Ensalada César con pollo. Segundo Plato: Pan integral. Postre: Mango."
+                    },
+                    {
+                        title: "Pizza Casera de Pepperoni",
+                        start: "2025-04-27",
+                        end: "2025-04-27",
+                        className: "color-cheatmeal",
+                        description: "Primer Plato: Pizza casera de pepperoni. Segundo Plato: Ensalada mixta. Postre: Tiramisú."
+                    },
+                    {
+                        title: "Guisantes con Jamón",
+                        start: "2025-04-28",
+                        end: "2025-04-28",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Guisantes con jamón. Segundo Plato: Tortilla francesa. Postre: Pera."
+                    },
+                    {
+                        title: "Crema de Calabaza y Pollo",
+                        start: "2025-04-29",
+                        end: "2025-04-29",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Crema de calabaza. Segundo Plato: Pollo a la plancha. Postre: Yogur con miel."
+                    },
+                    {
+                        title: "Tacos de Pescado",
+                        start: "2025-04-30",
+                        end: "2025-04-30",
+                        className: 'color-deportes',
+                        description: "Primer Plato: Tacos de pescado con salsa de yogur. Segundo Plato: Ensalada de col. Postre: Melocotón."
+                    }
+                    
+                    
+
+
+                ],
+                eventClick: function (info) {
+                    // Crear un modal personalizado en lugar de usar alert
+                    const modal = document.createElement('div');
+                    modal.className = 'modal';
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <h3>${info.event.title}</h3>
+                            <p>${info.event.extendedProps.description}</p>
+                            <div class="modal-buttons">
+                                <button class="btn-seccion" onclick="this.closest('.modal').remove()">Cerrar</button>
+                                <button class="btn-seccion btn-borrar" onclick="borrarEvento('${info.event.id}')">Borrar Evento</button>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+                }
+            });
+            calendar.render();
+
+            // Función para borrar eventos
+            window.borrarEvento = function (eventId) {
+                const evento = calendar.getEventById(eventId);
+                if (evento) {
+                    if (confirm('¿Estás seguro de que deseas borrar este evento?')) {
+                        evento.remove();
+                        document.querySelector('.modal').remove();
+                    }
+                }
+            };
+
+            // Funcionalidad para añadir nuevo evento
+            document.getElementById('formNuevoEvento').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const nuevoEvento = {
+                    title: document.getElementById('tituloEvento').value,
+                    start: document.getElementById('fechaInicio').value,
+                    end: document.getElementById('fechaFin').value,
+                    className: document.getElementById('tipoEvento').value,
+                    description: document.getElementById('descripcionEvento').value
+                };
+
+                calendar.addEvent(nuevoEvento);
+
+                // Limpiar el formulario
+                this.reset();
+
+                // Mostrar mensaje de éxito
+                alert('Evento añadido correctamente');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario - CMU San Agustín</title>
+    <link rel="stylesheet" href="../Estilos/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../Imagenes/Logo.png" alt="Logo Colegio Mayor">
+            </div>
+            <h1>CMU San Agustín</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Menú Principal</a></li>
+            <li><a href="Calendario.html" class="active">Gestion del calendario</a></li>
+            <li><a href="GestionMenu.html">Gestión del Menú</a></li>
+            <li><a href="GestionActividades.html">Gestión de Actividades</a></li>
+            <li><a href="GestionUsuarios.html">Gestión de Usuarios</a></li>
+        </ul>
+    </nav>
+    <main class="calendario-container">
+        <h2>Calendario de Actividades</h2>
+
+        <div class="leyenda">
+            <h3>Tipos de Actividades:</h3>
+            <div class="tipo-actividad">
+                <span class="color-deportes"></span>
+                <p>Deportes</p>
+            </div>
+            <div class="tipo-actividad">
+                <span class="color-cultural"></span>
+                <p>Actividades Culturales</p>
+            </div>
+            <div class="tipo-actividad">
+                <span class="color-academico"></span>
+                <p>Eventos Académicos</p>
+            </div>
+            <div class="tipo-actividad">
+                <span class="color-social"></span>
+                <p>Eventos Sociales</p>
+            </div>
+        </div>
+        <div id="calendario"></div>
+
+        <div class="nuevo-evento">
+            <h3>Añadir Nuevo Evento</h3>
+            <form id="formNuevoEvento">
+                <div class="form-group">
+                    <label for="tituloEvento">Título del Evento:</label>
+                    <input type="text" id="tituloEvento" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaInicio">Fecha de Inicio:</label>
+                    <input type="datetime-local" id="fechaInicio" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaFin">Fecha de Fin:</label>
+                    <input type="datetime-local" id="fechaFin" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipoEvento">Tipo de Evento:</label>
+                    <select id="tipoEvento" required>
+                        <option value="color-deportes">Deportes</option>
+                        <option value="color-cultural">Actividades Culturales</option>
+                        <option value="color-academico">Eventos Académicos</option>
+                        <option value="color-social">Eventos Sociales</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="descripcionEvento">Descripción:</label>
+                    <textarea id="descripcionEvento" required></textarea>
+                </div>
+                <button type="submit" class="btn-seccion">Añadir Evento</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Colegio Mayor - Gestión Universitaria</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendario');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Partido de Fútbol vs CMU Chaminade',
+                        start: '2025-03-10T16:00:00',
+                        end: '2025-03-10T18:00:00',
+                        className: 'color-deportes',
+                        description: 'Partido amistoso contra el Colegio Mayor Chaminade. Lugar: Campo de fútbol universitario'
+                    },
+                    {
+                        title: 'Conferencia: Inteligencia Artificial',
+                        start: '2025-03-15T18:30:00',
+                        end: '2025-03-15T20:00:00',
+                        className: 'color-academico',
+                        description: 'Ponente: Dr. Juan García. Lugar: Sala de conferencias'
+                    },
+                    {
+                        title: 'Cena de Convivencia',
+                        start: '2025-03-20T21:00:00',
+                        end: '2025-03-20T23:00:00',
+                        className: 'color-social',
+                        description: 'Cena mensual de convivencia entre colegiales. Lugar: Comedor principal'
+                    },
+                    {
+                        title: 'Exposición de Fotografía',
+                        start: '2025-03-25',
+                        end: '2025-03-27',
+                        className: 'color-cultural',
+                        description: 'Exposición de fotografías realizadas por colegiales. Lugar: Sala de exposiciones'
+                    },
+                    {
+                        title: 'Torneo de Baloncesto',
+                        start: '2025-03-12T17:00:00',
+                        end: '2025-03-12T20:00:00',
+                        className: 'color-deportes',
+                        description: 'Torneo interno de baloncesto 3x3. Lugar: Pista polideportiva'
+                    },
+                    {
+                        title: 'Club de Lectura',
+                        start: '2025-03-18T19:00:00',
+                        end: '2025-03-18T20:30:00',
+                        className: 'color-cultural',
+                        description: 'Discusión del libro "Cien años de soledad". Lugar: Biblioteca'
+                    },
+                    
+                    {
+                        title: 'Partido de Fútbol vs CMU Chaminade',
+                        start: '2025-04-01T16:00:00',
+                        end: '2025-04-01T18:00:00',
+                        className: 'color-deportes',
+                        description: 'Partido amistoso contra el Colegio Mayor Chaminade. Lugar: Campo de fútbol universitario'
+                    },
+                    {
+                        title: 'Conferencia: Inteligencia Artificial',
+                        start: '2025-04-02T18:30:00',
+                        end: '2025-04-02T20:00:00',
+                        className: 'color-academico',
+                        description: 'Ponente: Dr. Juan García. Lugar: Sala de conferencias'
+                    },
+                    {
+                        title: 'Torneo de Baloncesto',
+                        start: '2025-04-03T17:00:00',
+                        end: '2025-04-03T20:00:00',
+                        className: 'color-deportes',
+                        description: 'Torneo interno de baloncesto 3x3. Lugar: Pista polideportiva'
+                    },
+                    {
+                        title: 'Cena de Convivencia',
+                        start: '2025-04-04T21:00:00',
+                        end: '2025-04-04T23:00:00',
+                        className: 'color-social',
+                        description: 'Cena mensual de convivencia entre colegiales. Lugar: Comedor principal'
+                    },
+                    {
+                        title: 'Exposición de Fotografía',
+                        start: '2025-04-05',
+                        end: '2025-04-07',
+                        className: 'color-cultural',
+                        description: 'Exposición de fotografías realizadas por colegiales. Lugar: Sala de exposiciones'
+                    },
+                    {
+                        title: 'Club de Lectura',
+                        start: '2025-04-06T19:00:00',
+                        end: '2025-04-06T20:30:00',
+                        className: 'color-cultural',
+                        description: 'Discusión del libro "Cien años de soledad". Lugar: Biblioteca'
+                    },
+                    {
+                        title: 'Concierto de Música Clásica',
+                        start: '2025-04-07T20:00:00',
+                        end: '2025-04-07T22:00:00',
+                        className: 'color-cultural',
+                        description: 'Concierto de música clásica a cargo de la Orquesta Universitaria. Lugar: Auditorio principal'
+                    },
+                    {
+                        title: 'Charla: Emprendimiento en Tecnología',
+                        start: '2025-04-08T18:30:00',
+                        end: '2025-04-08T20:00:00',
+                        className: 'color-academico',
+                        description: 'Ponente: Ana Martínez. Lugar: Aula magna'
+                    },
+                    {
+                        title: 'Torneo de Ajedrez',
+                        start: '2025-04-09T15:00:00',
+                        end: '2025-04-09T18:00:00',
+                        className: 'color-deportes',
+                        description: 'Torneo interno de ajedrez. Lugar: Sala de juegos'
+                    },
+                    {
+                        title: 'Teatro: La Casa de Bernarda Alba',
+                        start: '2025-04-10T20:00:00',
+                        end: '2025-04-10T22:00:00',
+                        className: 'color-cultural',
+                        description: 'Representación teatral de "La Casa de Bernarda Alba". Lugar: Teatro Universitario'
+                    },
+                    {
+                        title: 'Taller de Fotografía',
+                        start: '2025-04-11T10:00:00',
+                        end: '2025-04-11T13:00:00',
+                        className: 'color-cultural',
+                        description: 'Taller práctico sobre fotografía digital. Lugar: Sala de arte'
+                    },
+                    {
+                        title: 'Noche de Juegos de Mesa',
+                        start: '2025-04-12T20:00:00',
+                        end: '2025-04-12T23:00:00',
+                        className: 'color-social',
+                        description: 'Noche de juegos de mesa entre colegiales. Lugar: Sala de actividades'
+                    },
+                    {
+                        title: 'Feria de Empleo Universitaria',
+                        start: '2025-04-13T10:00:00',
+                        end: '2025-04-13T16:00:00',
+                        className: 'color-academico',
+                        description: 'Feria de empleo con empresas y oportunidades laborales para estudiantes. Lugar: Pabellón central'
+                    },
+                    {
+                        title: 'Partido de Rugby vs Universidad X',
+                        start: '2025-04-14T16:00:00',
+                        end: '2025-04-14T18:00:00',
+                        className: 'color-deportes',
+                        description: 'Partido de rugby amistoso contra la Universidad X. Lugar: Campo de rugby'
+                    },
+                    {
+                        title: 'Cine: Documental sobre Cambio Climático',
+                        start: '2025-04-15T19:00:00',
+                        end: '2025-04-15T21:00:00',
+                        className: 'color-cultural',
+                        description: 'Proyección de documental sobre cambio climático. Lugar: Cine Universitario'
+                    },
+                    {
+                        title: 'Curso de Primeros Auxilios',
+                        start: '2025-04-16T09:00:00',
+                        end: '2025-04-16T14:00:00',
+                        className: 'color-academico',
+                        description: 'Curso de formación en primeros auxilios. Lugar: Aula de formación'
+                    },
+                    {
+                        title: 'Conferencia: Historia del Arte',
+                        start: '2025-04-17T18:00:00',
+                        end: '2025-04-17T19:30:00',
+                        className: 'color-academico',
+                        description: 'Ponente: Dr. Luis Fernández. Lugar: Aula de Historia del Arte'
+                    },
+                    {
+                        title: 'Exhibición de Arte Contemporáneo',
+                        start: '2025-04-18',
+                        end: '2025-04-20',
+                        className: 'color-cultural',
+                        description: 'Exhibición de arte contemporáneo. Lugar: Sala de exposiciones'
+                    },
+                    {
+                        title: 'Torneo de Tenis',
+                        start: '2025-04-19T10:00:00',
+                        end: '2025-04-19T13:00:00',
+                        className: 'color-deportes',
+                        description: 'Torneo interno de tenis. Lugar: Pistas de tenis'
+                    },
+                    {
+                        title: 'Feria de Libros Universitarios',
+                        start: '2025-04-20T10:00:00',
+                        end: '2025-04-20T16:00:00',
+                        className: 'color-academico',
+                        description: 'Feria de libros académicos y literatura universitaria. Lugar: Patio central'
+                    },
+                    {
+                        title: 'Festival de Música Universitaria',
+                        start: '2025-04-21T19:00:00',
+                        end: '2025-04-21T22:00:00',
+                        className: 'color-cultural',
+                        description: 'Concierto con bandas universitarias. Lugar: Escenario principal'
+                    },
+                    {
+                        title: 'Torneo de Ping Pong',
+                        start: '2025-04-22T17:00:00',
+                        end: '2025-04-22T20:00:00',
+                        className: 'color-deportes',
+                        description: 'Torneo interno de ping pong. Lugar: Sala de ping pong'
+                    },
+                    {
+                        title: 'Charla: Cómo Empezar un Negocio',
+                        start: '2025-04-23T18:30:00',
+                        end: '2025-04-23T20:00:00',
+                        className: 'color-academico',
+                        description: 'Ponente: Carlos Gómez. Lugar: Aula de emprendimiento'
+                    },
+                    {
+                        title: 'Noche de Karaoke',
+                        start: '2025-04-24T20:00:00',
+                        end: '2025-04-24T23:00:00',
+                        className: 'color-social',
+                        description: 'Noche de karaoke entre colegiales. Lugar: Sala de eventos'
+                    },
+                    {
+                        title: 'Conferencia: El Futuro de la Educación',
+                        start: '2025-04-25T18:00:00',
+                        end: '2025-04-25T20:00:00',
+                        className: 'color-academico',
+                        description: 'Ponente: Dra. Ana Pérez. Lugar: Sala de conferencias'
+                    },
+                    {
+                        title: 'Cine: Proyección de Cortometrajes',
+                        start: '2025-04-26T19:00:00',
+                        end: '2025-04-26T21:00:00',
+                        className: 'color-cultural',
+                        description: 'Proyección de cortometrajes realizados por estudiantes. Lugar: Cine universitario'
+                    },
+                    {
+                        title: 'Partido de Fútbol vs Equipo Local',
+                        start: '2025-04-27T16:00:00',
+                        end: '2025-04-27T18:00:00',
+                        className: 'color-deportes',
+                        description: 'Partido de fútbol contra el equipo local. Lugar: Estadio principal'
+                    },
+                    {
+                        title: 'Cena de Gala',
+                        start: '2025-04-28T21:00:00',
+                        end: '2025-04-28T23:00:00',
+                        className: 'color-social',
+                        description: 'Cena de gala para celebrar los logros del semestre. Lugar: Restaurante universitario'
+                    },
+                    {
+                        title: 'Taller de Pintura',
+                        start: '2025-04-29T10:00:00',
+                        end: '2025-04-29T13:00:00',
+                        className: 'color-cultural',
+                        description: 'Taller de pintura y arte libre. Lugar: Sala de arte'
+                    },
+                    {
+                        title: 'Conferencia: Psicología y Bienestar',
+                        start: '2025-04-30T18:30:00',
+                        end: '2025-04-30T20:00:00',
+                        className: 'color-academico',
+                        description: 'Ponente: Dr. Marcos Pérez. Lugar: Aula de Psicología'
+                    }
+                    
+
+                ],
+            eventClick: function(info) {
+                // Crear un modal personalizado en lugar de usar alert
+                const modal = document.createElement('div');
+                modal.className = 'modal';
+                modal.innerHTML = `
+                        <div class="modal-content">
+                            <h3>${info.event.title}</h3>
+                            <p>${info.event.extendedProps.description}</p>
+                            <div class="modal-buttons">
+                                <button class="btn-seccion" onclick="this.closest('.modal').remove()">Cerrar</button>
+                                <button class="btn-seccion btn-borrar" onclick="borrarEvento('${info.event.id}')">Borrar Evento</button>
+                            </div>
+                        </div>
+                    `;
+                document.body.appendChild(modal);
+            }
+        });
+        calendar.render();
+
+        // Función para borrar eventos
+        window.borrarEvento = function (eventId) {
+            const evento = calendar.getEventById(eventId);
+            if (evento) {
+                if (confirm('¿Estás seguro de que deseas borrar este evento?')) {
+                    evento.remove();
+                    document.querySelector('.modal').remove();
+                }
+            }
+        };
+
+        // Funcionalidad para añadir nuevo evento
+        document.getElementById('formNuevoEvento').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nuevoEvento = {
+                title: document.getElementById('tituloEvento').value,
+                start: document.getElementById('fechaInicio').value,
+                end: document.getElementById('fechaFin').value,
+                className: document.getElementById('tipoEvento').value,
+                description: document.getElementById('descripcionEvento').value
+            };
+
+            calendar.addEvent(nuevoEvento);
+
+            // Limpiar el formulario
+            this.reset();
+
+            // Mostrar mensaje de éxito
+            alert('Evento añadido correctamente');
+        });
+        });
+    </script>
+</body>
+
+</html>
